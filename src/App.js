@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useState } from "react";
+
+import "./App.css";
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const increase = () => {
+    setCounter((count) => count + 7);
+  };
+
+  const decrease = () => {
+    if (counter > 0) {
+      setCounter((count) => count - 7);
+    }
+  };
+
+  const reset = () => {
+    setCounter(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='counter'>
+      <h1>DogLife Counter🐶</h1>
+      <h3>From a human perspective🙆🏿</h3>
+      <span className='output'>{counter}</span>
+      <div className='btn_container'>
+        <button className='ctrl_btn' onClick={increase}>
+          Increase 🐕
+        </button>
+        <button className='ctrl_btn' onClick={decrease}>
+          Decrease 🐩
+        </button>
+        <button className='reset_btn' onClick={reset}>
+          Reset 🐕‍🦺
+        </button>
+      </div>
     </div>
   );
 }
